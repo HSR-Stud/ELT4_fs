@@ -1,0 +1,233 @@
+%definitions for Formelsammlung
+
+\usepackage[left=1.5cm,right=1.5cm,top=2.5cm,bottom=2cm,landscape]{geometry} 
+\usepackage{multicol}
+\usepackage[ngerman]{babel}
+\usepackage{tabularx}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{amsmath}  
+\usepackage{setspace} 
+\usepackage{commath}
+\usepackage[utf8]{inputenc}
+%\usepackage[ansinew]{inputenc}  
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+\usepackage{hyperref}
+\usepackage{bigints}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{layouts}
+\usepackage{siunitx}
+\usepackage{wrapfig}
+\usepackage{multirow,bigstrut}
+\usepackage{trfsigns}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{datetime}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{listings}
+\usepackage{steinmetz}
+\usepackage{textcomp}
+\usepackage[export]{adjustbox}
+\usepackage{booktabs}
+
+\setlayoutscale{0.5}
+
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\arsinh{arsinh} 
+\DeclareMathOperator\arcosh{arcosh}
+\DeclareMathOperator\artanh{artanh}
+\DeclareMathOperator\arcoth{arcoth} 
+\DeclareMathOperator\sinc{sinc} 
+\DeclareMathOperator\Real{Re} 
+\DeclareMathOperator\Imag{Im} 
+\DeclareMathOperator\sgn{sgn} 
+\DeclareMathOperator\LPF{LPF} 
+\DeclareMathOperator\Q{Q} 
+\DeclareMathOperator\erf{erf} 
+
+
+%colorCodes
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+\definecolor{lightGray}{gray}{0.1}
+
+\definecolor{cOrange}{HTML}{996633}
+\definecolor{cBlue}{HTML}{336699}
+\definecolor{cGreen}{HTML}{339966}
+\definecolor{cRed}{HTML}{993333}
+\definecolor{cGray}{gray}{0.4} 
+
+
+
+\setlength{\parindent}{0pt}
+%\DeclareMathOperator\arctanh{arccot}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+\newcommand{\fmm}{\displaystyle} 
+\newcommand{\cn}[1]{\underline{#1}} 
+\newcommand{\hlaplace}{\quad\laplace\quad}
+\newcommand{\hLaplace}{\quad\Laplace\quad}
+\newcommand{\rads}{\left[\frac{rad}{s}\right]}
+\newcommand{\pol}{\textbf{\color{cRed}\texttimes}}
+\newcommand{\nullstelle}{$\color{cBlue}\mathbf{\circ}$}
+\newcommand{\symtrue}{\checkmark}
+\newcommand{\symfalse}{\textbf{\textemdash}}
+
+\newenvironment{definition}{\color{cGray}}{}
+\newcommand{\cdef}[1]{\begin{definition}#1\end{definition}}
+\newenvironment{mat1}{\left[ \begin{array}{c}}{\end{array}\right]}
+\newenvironment{mat2}{\left[ \begin{array}{cc}}{\end{array}\right]}
+
+\newcommand{\vLaplace}[1][]{\mbox{\setlength{\unitlength}{0.1em}%
+        \begin{picture}(10,20)%
+          \put(3,2){\circle{4}}%
+          \put(3,4){\line(0,1){12}}%
+          \put(3,18){\circle*{4}}%
+          \put(10,7){#1}
+        \end{picture}%
+       }%
+ }%
+
+\newcommand{\vlaplace}[1][]{\mbox{\setlength{\unitlength}{0.1em}%
+        \begin{picture}(10,20)%
+          \put(3,2){\circle*{4}}%
+          \put(3,4){\line(0,1){12}}%
+          \put(3,18){\circle{4}}%
+          \put(10,7){#1}
+        \end{picture}%
+       }%
+ }%                    
+ 
+ 
+\renewcommand{\arraystretch}{1.5}
+
+\newenvironment{mtabular}[1] {
+  \renewcommand{\arraystretch}{2}
+  
+  \begin{tabular}{#1}
+}  
+{
+  \end{tabular}
+  
+  \renewcommand{\arraystretch}{1.5}
+}
+
+\newenvironment{dtabular} {
+  \begin{tabular}{>{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}}}
+}  
+{
+  \end{tabular}
+}
+
+\newenvironment{ddtabular} {
+  \begin{tabular}{>{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}}}
+}  
+{
+  \end{tabular}
+}
+
+
+%Zweitor
+\pgfdeclareshape{zweitor} {
+  \anchor{center}{\pgfpointorigin} % within the node, (0,0) is the center
+  \anchor{text} % this is used to center the text in the node
+    {\pgfpoint{-.5\wd\pgfnodeparttextbox}{-.5\ht\pgfnodeparttextbox}}
+  
+  %Pins
+  \savedanchor\pina{\pgfpoint {-0.75cm}{0.5cm}}
+  \anchor{A1}{\pina}
+  \savedanchor\pinb{\pgfpoint {-0.75cm}{-0.5cm}}
+  \anchor{B1}{\pinb}
+  \savedanchor\pinc{\pgfpoint {0.75cm}{0.5cm}}
+  \anchor{A2}{\pinc}
+  \savedanchor\pind{\pgfpoint {0.75cm}{-0.5cm}}
+  \anchor{B2}{\pind}
+  
+  %draw box
+  \foregroundpath{ %border is drawn here
+    \pgfsetlinewidth{0.3mm}
+    \pgfpathrectanglecorners{\pgfpoint{-0.75cm}{-0.75cm}}{\pgfpoint{0.75cm}{0.75cm}}
+    \pgfusepath{draw}    
+  }
+  
+}
+
+%smith chart
+\usepgfplotslibrary{smithchart}
+
+
+%lstlisting
+
+\lstset{
+  backgroundcolor=\color{lbcolor},
+  tabsize=2,    
+% rulecolor=,
+  language=[GNU]C++,
+  basicstyle=\scriptsize,
+  upquote=true,
+  aboveskip={1.5\baselineskip},
+  columns=fixed,
+  showstringspaces=false,
+  extendedchars=false,
+  breaklines=true,
+  prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+  frame=single,
+  numbers=none,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  identifierstyle=\ttfamily,
+  keywordstyle=\color{cBlue}
+  commentstyle=\color{cGreen},
+  stringstyle=\color{cRed},
+  numberstyle=\color{black},
+% \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+\lstset{
+  backgroundcolor=\color{lbcolor},
+  tabsize=2,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  frame=lines,
+  numbers=none,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\ttfamily,
+  identifierstyle=\color{cOrange},
+  keywordstyle=\color{cBlue},
+  commentstyle=\color{cGreen},
+  stringstyle=\color{cRed}
+}
+
+\lstdefinelanguage{makefile}{
+  morekeywords={cc,CFLAGS,LFLAGS,OBJ,EXE},
+  morecomment=[l]{\#}
+}
+
+\lstdefinestyle{makefile}{
+  language=makefile,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{cBlue},
+  commentstyle=\color{cGreen},
+  frame=lines,
+  numbers=none,
+  backgroundcolor=\color{lbcolor}
+}
+
+%header & footer
+\pagestyle{fancy}
+\lhead{Tibor Schneider}
+\rhead{Seite \thepage}
+\cfoot{\today} 
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
