@@ -112,9 +112,9 @@ $\alpha_{1,2}$: & \multicolumn{3}{l}{Lösungen der Charakteristischen Gleichung}
   $\fmm \alpha_{1,2} = -\frac{\omega_r}{2Q_S} = -\omega_r$ \\
   \textbf{Fall} $Q > \frac{1}{2}$: Periodisch, $\alpha_1, \alpha_2 \in \mathbb{C}$ &  
   \textbf{Fall} $Q > \frac{1}{2}$: Periodisch, $\alpha_1, \alpha_2 \in \mathbb{C}$ \\
-  $\fmm u(t) = e^{\frac{\omega_r}{2 Q_P} t} (\textcolor{cBlue}{U_a} \cos{\omega_0
+  $\fmm u(t) = e^{\frac{-\omega_r}{2 Q_P} t} (\textcolor{cBlue}{U_a} \cos{\omega_0
   t} + \textcolor{cBlue}{U_b} \sin{\omega_0 t})$ &
-  $\fmm i(t) = e^{\frac{\omega_r}{2 Q_S} t} (\textcolor{cRed}{I_a} \cos{\omega_0
+  $\fmm i(t) = e^{\frac{-\omega_r}{2 Q_S} t} (\textcolor{cRed}{I_a} \cos{\omega_0
   t} + \textcolor{cRed}{I_b} \sin{\omega_0 t})$ \\
   $\fmm \dot{u}(t = 0) = - \frac{\omega_r}{2Q_P} \textcolor{cBlue}{U_a} + \omega_0
   \textcolor{cBlue}{U_b}$ &
@@ -157,6 +157,8 @@ im Folgenden wird der Faktor $y(t) = e^{-\frac{\omega_r}{2 Q}\cdot t}$ untersuch
   \right) \cdot Q$ \\
   $\fmm B = f_2 - f_1 = \frac{\omega_2 - \omega_1}{2\pi} = \frac{\omega_r}{2\pi Q}$ &
   $\omega_{1,2} = \omega_r \cdot \left(\sqrt{\frac{1}{4Q^2}+1} \mp \frac{1}{2Q}\right)$ \\
+  \multicolumn{2}{c}{$\frac{Z}{R} = \frac{1}{1+j\Omega} = \frac{1}{\sqrt{1+\Omega^2}}
+\phase{-\arctan{\Omega}}$} \\
   \multicolumn{2}{c}{$\text{bei } \omega = \omega_1 \rightarrow \Omega = -1, \quad
   \text{bei } \omega = \omega_2 \rightarrow \Omega = +1$} \\ \hline
 \end{tabularx}
@@ -180,11 +182,7 @@ im Folgenden wird der Faktor $y(t) = e^{-\frac{\omega_r}{2 Q}\cdot t}$ untersuch
   $\fmm \frac{\cn{Y}}{G} = \frac{1}{\sqrt{2}} \widehat{=} -3dB$
 \end{tabularx}
 
-\subsubsection{Normierter Frequenzgang}
- 
-$$\frac{Z}{R} = \frac{1}{1+j\Omega} = \frac{1}{\sqrt{1+\Omega^2}}
-\phase{-\arctan{\Omega}}, \quad \Omega = \nu \cdot Q = Q
-\left(\frac{\omega}{\omega_r} - \frac{\omega_r}{\omega}\right)$$
+\vspace{.3em}
 
 \begin{tabularx}{\columnwidth}{YY}
   \begin{tikzpicture}
@@ -259,14 +257,6 @@ $$\frac{Z}{R} = \frac{1}{1+j\Omega} = \frac{1}{\sqrt{1+\Omega^2}}
 %\end{array}$$
 
 \section{Reaktanz-Eintore}
-\begin{definition}
-  \begin{tabular}{ll|ll}
-    $X = \Imag(\cn{Z})$ & Reaktanz &
-    $B = \Imag(\cn{Y})$ & Suszeptanz \\
-    %$X(\omega_{NS}) = 0$ & Nullstelle &
-    %$X(\omega_{PS}) = \pm \infty$ & Polstelle \\
-  \end{tabular}
-\end{definition}
 
 \subsection{Grundelemente}
 \begin{tabularx}{\columnwidth}{Y|Y|Y|Y}
@@ -333,11 +323,12 @@ b_{m-2}(j\omega)^{m-2} + b_{m-4} (j \omega)^{m-4}} = \frac{P_n(j\omega)}{Q_m(j \
 
 \begin{itemize}
   \item $\abs{n - m} = 1$: Im Zähler und im Nenner kommen nie dieselben Potenzen vor. 
-  \item Den Polynomen $P_n(j\omega)$ und $Q_n(j\omega)$ fehlen keine Koeffizienten.
   \item Die Anzahl der Elemente entspicht der Anzahl endlicher Nullstellen und Polstellen.
   \item Die Ableitung der Funktion $\cn{Z}(j\omega)$ ist immer positiv, d.H $\cn{Z}$ ist
   monoton Steigend.
 \end{itemize}
+
+\textbf{Normierte Produktform:} (Beispiel) $\fmm \quad \cn{Z}(j\omega) = K \cdot \frac{\left[(j\omega)^2 + \omega_{r1}^2\right] \left[(j\omega)^2 + \omega_{r2}^2\right]}{j\omega \left[(j\omega)^2 + \omega_{r3}^2\right]}$
 
 \subsection{Minimum-Reaktanz-Eintore MRET}
 \begin{tabularx}{\columnwidth}{XX}
@@ -415,7 +406,7 @@ b_{m-2}(j\omega)^{m-2} + b_{m-4} (j \omega)^{m-4}} = \frac{P_n(j\omega)}{Q_m(j \
 \subsubsection{Mittels Kettenbruchzerlegung}
 \begin{mtabular}{ll}
 1.~Voraussetzung: Unecht gebrochen & $\fmm \cn{F}(s) = \frac{2s^6 + 22s^4 + 58s^2 + 48}{3s^5 + 21s^3 + 30s}$ \\
-2.~Polynomdivision ausführen & $\fmm \cn{F}(s) = \frac{2}{3}s \cdot + \frac{8s^4 + 48s^2 + 48}{3s^5 + 21s^3 + 30s}$ \\
+2.~Polynomdivision ausführen & $\fmm \cn{F}(s) = \frac{2}{3}s + \frac{8s^4 + 48s^2 + 48}{3s^5 + 21s^3 + 30s}$ \\
 3.~mit Kehrwert des Rests bei 2. fortfahren & $\fmm \cn{F}_1(s) = \frac{3s^5 + 21s^3 + 30s}{8s^4 + 48s^2 + 48}$ \\
 \multicolumn{2}{l}{4.~Abgespaltete Werte Seriell und Parallel (je nach Bedeutung von $\cn{F}_n$) sind die Elemente.}
 \end{mtabular}
@@ -519,100 +510,205 @@ b_{m-2}(j\omega)^{m-2} + b_{m-4} (j \omega)^{m-4}} = \frac{P_n(j\omega)}{Q_m(j \
 \end{tabular}
 \end{center}
 
-\subsection{Leerlauf und Kurzschluss am Zweitor}
-
-Bei einer \cdef{Kurzschlussimpedanz $\cn{Z_{1k}}$, $\cn{Z_{2k}}$} wird die jeweils
-gegenüberliegende Seite kurzgeschlossen. Bei den \cdef{Leerlaufimpedanzen $\cn{Z_{1l}}$, $\cn{Z_{2l}}$} 
-
-$$\begin{array}{>{\fmm}c >{\fmm}c >{\fmm}c >{\fmm}c >{\fmm}c}
-  & [\cn{A}] & [\cn{Z}] & [\cn{Y}] & [\cn{H}] \\
-  \toprule
-  \cn{Z_{1k}} = & 
-  \frac{\cn{A}_{12}}{\cn{A}_{11}} & 
-  \frac{\det{[\cn{Z}]}}{\cn{Z}_{22}} &
-  \frac{1}{\cn{Y}_{11}} &
-  \cn{H}_{11} \\
-  \midrule
-  \cn{Z_{2k}} = & \frac{\cn{A}_{12}}{\cn{A}_{11}} &
-  \frac{\det{[\cn{Z}]}}{\cn{Z}_{11}} &
-  \frac{1}{\cn{Y}_{22}} &
-  \frac{\cn{H}_{11}}{\det{[\cn{H}]}} \\
-  \midrule
-  \cn{Z}_{1l} = &
-  \frac{\cn{A}_{11}}{\cn{A}_{21}} &
-  \cn{Z_{11}} &
-  \frac{\cn{Y}_{22}}{\det{[\cn{Y}]}} &
-  \frac{1}{\cn{H}_{22}} \\
-  \midrule
-  \cn{Z}_{2l} = & \frac{\cn{A}_{22}}{\cn{A}_{21}} &
-  \cn{Z}_{22} &
-  \frac{\cn{Y}_{11}}{\det{[\cn{Y}]}} &
-  \frac{1}{\cn{H}_{22}} \\
-\end{array}$$
-
-\subsection{Ersatzschaltungen}
-\begin{tabular}{ll}
+\subsection{Matrizen elementarer Zweitore}
+\begin{tabular}{ccc}
+   & $\mathbf{Z}$ & $\mathbf{Y}$ \\ % & $\mathbf{A}$ \\ 
+   
+   \toprule
+   
   \begin{tabular}{l}
-    \begin{circuitikz} [scale=0.8, transform shape]
-      \draw (0,2) to [short, i=$\cn{I}_1$, *-] (1,2) to [resistor, l_=$\cn{Z}_{11}$] (3,2);
-      \draw (0,0) to [short, *-](3,0) to [voltage source] (3,2);
-      \draw [-latex] (4.4,1) to node[above]{$\cn{Z}_{12} \cdot \cn{I}_2$} (3.4,1);
-      \draw[-latex,shorten >=2mm, shorten <=2mm,in=120, out=240] (0,2) to node[right] {$\cn{U}_1$} (0,0);
-         
-      \draw (9,2) to [short, i=$\cn{I}_1$, *-] (8,2) to [resistor, l^=$\cn{Z}_{22}$] (6,2);
-      \draw (9,0) to [short, *-](6,0) to [voltage source] (6,2);
-      \draw [-latex] (4.6,1) to node[above]{$\cn{Z}_{21} \cdot \cn{I}_1$} (5.6,1);
-      \draw[-latex,shorten >=2mm, shorten <=2mm,out=300, in=60] (9,2) to node[left] {$\cn{U}_2$} (9,0);
+    \begin{circuitikz}[scale=0.5, transform shape]
+      \draw (0,2) to [short, o-o] (4,2);
+      \draw (0,0) to [short, o-o] (4,0);
+      \draw (2,2) to [R, l={\Large $\cn{Z};\cn{Y}$}, *-*] (2,0);
     \end{circuitikz}
-  \end{tabular} &
-  \begin{tabular}{l}
-    \textbf{Z-Ersatzschaltung}: \\
-    $\cn{U}_1 = \cn{Z}_{11} \cdot \cn{I}_1 + \cn{Z}_{12} \cdot \cn{I}_2$ \\
-    $\cn{U}_2 = \cn{Z}_{21} \cdot \cn{I}_1 + \cn{Z}_{22} \cdot \cn{I}_2$ \\
-  \end{tabular} \\
+  \end{tabular} & 
   
-  %\midrule
+  $\fmm \left[ \begin{array}{cc}
+    \cn{Z} & \cn{Z} \\ \cn{Z} & \cn{Z}
+  \end{array} \right] $ &
+  
+  existiert nicht \\
+  
+  %$\fmm \left[ \begin{array}{cc}
+  %  1 & 0 \\ \cn{Y} & 1
+  %\end{array} \right] $  \\ 
+  
+  \midrule
   
   \begin{tabular}{l}
-    \begin{circuitikz} [scale=0.8, transform shape]
-      \draw (0,2) to [short, i=$\cn{I}_1$, *-] (1,2) to [short] (3,2) to [I] (3,0) to [short, -*](0,0);
-      \draw (2,2) to [resistor, l_={$\cn{Y}_{11}$}] (2,0);
-      \draw [-latex] (4.4,1) to node[above]{$\cn{Y}_{12} \cdot \cn{U}_2$} (3.4,1);
-      \draw[-latex,shorten >=2mm, shorten <=2mm,in=120, out=240] (0,2) to node[right] {$\cn{U}_1$} (0,0);
-         
-      \draw (9,2) to [short, i=$\cn{I}_1$, *-] (8,2) to [short] (6,2) to [I] (6,0) to [short, -*](9,0);
-      \draw (7,2) to [resistor, l={$\cn{Y}_{22}$}] (7,0);
-      \draw [-latex] (4.6,1) to node[above]{$\cn{Y}_{21} \cdot \cn{U}_1$} (5.6,1);
-      \draw[-latex,shorten >=2mm, shorten <=2mm,out=300, in=60] (9,2) to node[left] {$\cn{U}_2$} (9,0);
+    \begin{circuitikz}[scale=0.5, transform shape]
+      \draw (0,2) to [R, l_={\Large $\cn{Z}; \cn{Y}$}, o-o] (4,2);
+      \draw (0,0) to [short, o-o] (4,0);
     \end{circuitikz}
-  \end{tabular} &
-  \begin{tabular}{l}
-    \textbf{Y-Ersatzschaltung}: \\
-    $\cn{I}_1 = \cn{Y}_{11} \cdot \cn{U}_1 + \cn{Y}_{12} \cdot \cn{U}_2$ \\
-    $\cn{I}_2 = \cn{Y}_{21} \cdot \cn{U}_1 + \cn{Y}_{22} \cdot \cn{U}_2$ \\
-  \end{tabular} \\
+  \end{tabular} & 
+    
+  existiert nicht &  
+    
+  $\fmm \left[ \begin{array}{cc}
+    \cn{Y} & -\cn{Y} \\ -\cn{Y} & \cn{Y}
+  \end{array} \right] $ \\
   
-  %\midrule
-  
+  %$\fmm \left[ \begin{array}{cc}
+  %  1 & \cn{Z} \\ 0 & 1
+  %\end{array} \right] $  \\ 
+
+  \midrule
+  \multirow{2}{*}{
   \begin{tabular}{l}
-    \begin{circuitikz} [scale=0.8, transform shape]
-      \draw (0,2) to [short, i=$\cn{I}_1$, *-] (1,2) to [resistor, l_={$\cn{H}_{11}$}] (3,2);
-      \draw (0,0) to [short, *-](3,0) to [voltage source] (3,2);
-      \draw [-latex] (4.4,1) to node[above]{$\cn{H}_{12} \cdot \cn{U}_2$} (3.4,1);
-      \draw[-latex,shorten >=2mm, shorten <=2mm,in=120, out=240] (0,2) to node[right] {$\cn{U}_1$} (0,0);
-         
-      \draw (9,2) to [short, i=$\cn{I}_1$, *-] (8,2) to [short] (6,2) to [I] (6,0) to [short, -*](9,0);
-      \draw (7,2) to [resistor, l={$\frac{1}{\cn{H}_{22}}$}] (7,0);
-      \draw [-latex] (4.6,1) to node[above]{$\cn{H}_{21} \cdot \cn{I}_1$} (5.6,1);
-      \draw[-latex,shorten >=2mm, shorten <=2mm,out=300, in=60] (9,2) to node[left] {$\cn{U}_2$} (9,0);
+    \begin{circuitikz}[scale=0.5, transform shape]
+      \draw (0,2) to [R, l_={\Large $\cn{Z_1}$}, o-] (2,2) to [R, l_={\Large $\cn{Z_2}$}, -o] (4,2);
+      \draw (0,0) to [short, o-o] (4,0);
+      \draw (2,2) to [R, l={\Large $\cn{Z_3}$}, *-*] (2,0);
     \end{circuitikz}
-  \end{tabular} &
-  \begin{tabular}{l}
-    \textbf{H-Ersatzschaltung}: \\
-    $\cn{U}_1 = \cn{H}_{11} \cdot \cn{I}_1 + \cn{H}_{12} \cdot \cn{U}_2$ \\
-    $\cn{I}_2 = \cn{H}_{21} \cdot \cn{I}_1 + \cn{H}_{22} \cdot \cn{U}_2$ \\
-  \end{tabular} \\
+  \end{tabular}} & 
+  
+  $\fmm \left[ \begin{array}{cc}
+    \cn{Z_1} + \cn{Z_3} & \cn{Z_3} \\ \cn{Z_3} & \cn{Z_2} + \cn{Z_3}
+  \end{array} \right] $ &
+  
+  $\fmm \frac{1}{\cn{Z_R}}\left[ \begin{array}{cc}
+    \cn{Z_2} + \cn{Z_3} & -\cn{Z_3} \\ -\cn{Z_3} & \cn{Z_1} + \cn{Z_3}
+  \end{array} \right] $ \\
+  
+  %$\fmm \left[ \begin{array}{cc}
+  %  1 + \frac{\cn{Z_1}}{\cn{Z_3}} & \cn{Z_1} + \cn{Z_2} + \frac{\cn{Z_1} \cn{Z_2}}{\cn{Z_3}} \\
+  %  \frac{1}{\cn{Z_3}} & 1 + \frac{\cn{Z_2}}{\cn{Z_3}}
+  %\end{array} \right] $  \\ 
+  &
+  $\mathbf{A} = \left[ \begin{array}{cc} 
+    1 + \frac{\cn{Z_1}}{\cn{Z_3}} & \cn{Z_1} + \cn{Z_2} + \frac{\cn{Z_1}\cn{Z_2}}{\cn{Z_3}} \\
+    \frac{1}{\cn{Z_3}} & 1 + \frac{\cn{Z_2}}{\cn{Z_3}} \\
+  \end{array}  \right]$ & 
+  $\cn{Z_R} = \cn{Z_1} \cn{Z_2} + \cn{Z_2} \cn{Z_3} + \cn{Z_1} \cn{Z_3}$ \\
 \end{tabular}
+
+\begin{tabular}{ccc}
+  
+  & $\mathbf{Z}$ & $\mathbf{Y}$ \\ % & $\mathbf{A}$ \\ 
+   
+  \toprule
+  
+  \begin{tabular}{l}
+    \begin{circuitikz}[scale=0.5, transform shape]
+      \draw (0,2) to [short, o-]  (1,2) to [R, l_={\Large $\cn{Z_3}$}] (3,2) to [short, -o] (4,2);
+      \draw (0,0) to [short, o-o] (4,0);
+      \draw (1,2) to [R, l_={\Large $\cn{Z_1}$}, *-*] (1,0);
+      \draw (3,2) to [R, l^={\Large $\cn{Z_2}$}, *-*] (3,0);
+      
+    \end{circuitikz}
+  \end{tabular} & 
+    
+  $\fmm \frac{1}{\cn{Z_R}} \left[ \begin{array}{cc}
+    \cn{Z_1}(\cn{Z_2} + \cn{Z_3}) & \cn{Z_1} \cn{Z_2} \\ 
+    \cn{Z_1} \cn{Z_2} & \cn{Z_2}(\cn{Z_1} + \cn{Z_3}) \\
+  \end{array} \right] $ &
+    
+  $\fmm \left[ \begin{array}{cc}
+    \cn{Y_1} + \cn{Y_3} & -\cn{Y_3} \\ -\cn{Y_3} & \cn{Y_2} + \cn{Y_3}
+  \end{array} \right] $ \\
+  
+  & $\cn{Z_R} = \cn{Z_1} + \cn{Z_2} + \cn{Z_3}$ & \\
+  
+  \midrule
+  
+  
+\end{tabular}
+
+% \subsection{Leerlauf und Kurzschluss am Zweitor}
+% 
+% Bei einer \cdef{Kurzschlussimpedanz $\cn{Z_{1k}}$, $\cn{Z_{2k}}$} wird die jeweils
+% gegenüberliegende Seite kurzgeschlossen. Bei den \cdef{Leerlaufimpedanzen $\cn{Z_{1l}}$, $\cn{Z_{2l}}$} 
+% 
+% $$\begin{array}{>{\fmm}c >{\fmm}c >{\fmm}c >{\fmm}c >{\fmm}c}
+%   & [\cn{A}] & [\cn{Z}] & [\cn{Y}] & [\cn{H}] \\
+%   \toprule
+%   \cn{Z_{1k}} = & 
+%   \frac{\cn{A}_{12}}{\cn{A}_{11}} & 
+%   \frac{\det{[\cn{Z}]}}{\cn{Z}_{22}} &
+%   \frac{1}{\cn{Y}_{11}} &
+%   \cn{H}_{11} \\
+%   \midrule
+%   \cn{Z_{2k}} = & \frac{\cn{A}_{12}}{\cn{A}_{11}} &
+%   \frac{\det{[\cn{Z}]}}{\cn{Z}_{11}} &
+%   \frac{1}{\cn{Y}_{22}} &
+%   \frac{\cn{H}_{11}}{\det{[\cn{H}]}} \\
+%   \midrule
+%   \cn{Z}_{1l} = &
+%   \frac{\cn{A}_{11}}{\cn{A}_{21}} &
+%   \cn{Z_{11}} &
+%   \frac{\cn{Y}_{22}}{\det{[\cn{Y}]}} &
+%   \frac{1}{\cn{H}_{22}} \\
+%   \midrule
+%   \cn{Z}_{2l} = & \frac{\cn{A}_{22}}{\cn{A}_{21}} &
+%   \cn{Z}_{22} &
+%   \frac{\cn{Y}_{11}}{\det{[\cn{Y}]}} &
+%   \frac{1}{\cn{H}_{22}} \\
+% \end{array}$$
+% 
+% \subsection{Ersatzschaltungen}
+% \begin{tabular}{ll}
+%   \begin{tabular}{l}
+%     \begin{circuitikz} [scale=0.8, transform shape]
+%       \draw (0,2) to [short, i=$\cn{I}_1$, *-] (1,2) to [resistor, l_=$\cn{Z}_{11}$] (3,2);
+%       \draw (0,0) to [short, *-](3,0) to [voltage source] (3,2);
+%       \draw [-latex] (4.4,1) to node[above]{$\cn{Z}_{12} \cdot \cn{I}_2$} (3.4,1);
+%       \draw[-latex,shorten >=2mm, shorten <=2mm,in=120, out=240] (0,2) to node[right] {$\cn{U}_1$} (0,0);
+%          
+%       \draw (9,2) to [short, i=$\cn{I}_1$, *-] (8,2) to [resistor, l^=$\cn{Z}_{22}$] (6,2);
+%       \draw (9,0) to [short, *-](6,0) to [voltage source] (6,2);
+%       \draw [-latex] (4.6,1) to node[above]{$\cn{Z}_{21} \cdot \cn{I}_1$} (5.6,1);
+%       \draw[-latex,shorten >=2mm, shorten <=2mm,out=300, in=60] (9,2) to node[left] {$\cn{U}_2$} (9,0);
+%     \end{circuitikz}
+%   \end{tabular} &
+%   \begin{tabular}{l}
+%     \textbf{Z-Ersatzschaltung}: \\
+%     $\cn{U}_1 = \cn{Z}_{11} \cdot \cn{I}_1 + \cn{Z}_{12} \cdot \cn{I}_2$ \\
+%     $\cn{U}_2 = \cn{Z}_{21} \cdot \cn{I}_1 + \cn{Z}_{22} \cdot \cn{I}_2$ \\
+%   \end{tabular} \\
+%   
+%   %\midrule
+%   
+%   \begin{tabular}{l}
+%     \begin{circuitikz} [scale=0.8, transform shape]
+%       \draw (0,2) to [short, i=$\cn{I}_1$, *-] (1,2) to [short] (3,2) to [I] (3,0) to [short, -*](0,0);
+%       \draw (2,2) to [resistor, l_={$\cn{Y}_{11}$}] (2,0);
+%       \draw [-latex] (4.4,1) to node[above]{$\cn{Y}_{12} \cdot \cn{U}_2$} (3.4,1);
+%       \draw[-latex,shorten >=2mm, shorten <=2mm,in=120, out=240] (0,2) to node[right] {$\cn{U}_1$} (0,0);
+%          
+%       \draw (9,2) to [short, i=$\cn{I}_1$, *-] (8,2) to [short] (6,2) to [I] (6,0) to [short, -*](9,0);
+%       \draw (7,2) to [resistor, l={$\cn{Y}_{22}$}] (7,0);
+%       \draw [-latex] (4.6,1) to node[above]{$\cn{Y}_{21} \cdot \cn{U}_1$} (5.6,1);
+%       \draw[-latex,shorten >=2mm, shorten <=2mm,out=300, in=60] (9,2) to node[left] {$\cn{U}_2$} (9,0);
+%     \end{circuitikz}
+%   \end{tabular} &
+%   \begin{tabular}{l}
+%     \textbf{Y-Ersatzschaltung}: \\
+%     $\cn{I}_1 = \cn{Y}_{11} \cdot \cn{U}_1 + \cn{Y}_{12} \cdot \cn{U}_2$ \\
+%     $\cn{I}_2 = \cn{Y}_{21} \cdot \cn{U}_1 + \cn{Y}_{22} \cdot \cn{U}_2$ \\
+%   \end{tabular} \\
+%   
+%   %\midrule
+%   
+%   \begin{tabular}{l}
+%     \begin{circuitikz} [scale=0.8, transform shape]
+%       \draw (0,2) to [short, i=$\cn{I}_1$, *-] (1,2) to [resistor, l_={$\cn{H}_{11}$}] (3,2);
+%       \draw (0,0) to [short, *-](3,0) to [voltage source] (3,2);
+%       \draw [-latex] (4.4,1) to node[above]{$\cn{H}_{12} \cdot \cn{U}_2$} (3.4,1);
+%       \draw[-latex,shorten >=2mm, shorten <=2mm,in=120, out=240] (0,2) to node[right] {$\cn{U}_1$} (0,0);
+%          
+%       \draw (9,2) to [short, i=$\cn{I}_1$, *-] (8,2) to [short] (6,2) to [I] (6,0) to [short, -*](9,0);
+%       \draw (7,2) to [resistor, l={$\frac{1}{\cn{H}_{22}}$}] (7,0);
+%       \draw [-latex] (4.6,1) to node[above]{$\cn{H}_{21} \cdot \cn{I}_1$} (5.6,1);
+%       \draw[-latex,shorten >=2mm, shorten <=2mm,out=300, in=60] (9,2) to node[left] {$\cn{U}_2$} (9,0);
+%     \end{circuitikz}
+%   \end{tabular} &
+%   \begin{tabular}{l}
+%     \textbf{H-Ersatzschaltung}: \\
+%     $\cn{U}_1 = \cn{H}_{11} \cdot \cn{I}_1 + \cn{H}_{12} \cdot \cn{U}_2$ \\
+%     $\cn{I}_2 = \cn{H}_{21} \cdot \cn{I}_1 + \cn{H}_{22} \cdot \cn{U}_2$ \\
+%   \end{tabular} \\
+% \end{tabular}
 
 \subsection{Zusammenschaltung von Zweitoren}
 
@@ -860,7 +956,7 @@ $$\lambda = \frac{2\pi}{\beta} = \frac{c_0}{f \cdot \sqrt{\varepsilon_r}} \qquad
 \begin{center}
   \begin{ddtabular}
     $\cn{U}_v$ & Vorlaufende Welle (positive z-Richtung) &
-    $\alpha$ & Dämpfungsbelag \\
+    $\alpha \left[ \frac{Np}{m}\right]$ & Dämpfungsbelag \\
     $\cn{U}_r$ & Rücklaufende Welle (negative z-Richtung)&
     $\beta \left[ \frac{rad}{s} \right]$ & Phasenbelag \\
     $v_{ph}$ & Geschwindigkeit der Welle &
@@ -869,6 +965,11 @@ $$\lambda = \frac{2\pi}{\beta} = \frac{c_0}{f \cdot \sqrt{\varepsilon_r}} \qquad
     $\varepsilon_r$ & Relative Permitivität \\
   \end{ddtabular}
 \end{center}
+
+\subsection{Dämpfungsbelag und Neper}
+Umrechnung von Neper zu Decibel: 
+$$L_{Np} = \ln{\frac{P_2}{P_1}} \qquad L_{Np} = \frac{\ln(10)}{20} L_{dB} \qquad L_{dB} = \frac{20}{\ln(10)} L_{Np}$$
+
 
 \subsection{Reflexion}
 
@@ -879,9 +980,11 @@ $$\lambda = \frac{2\pi}{\beta} = \frac{c_0}{f \cdot \sqrt{\varepsilon_r}} \qquad
         $\cn{r}$ & Reflexionsfaktor \\
         $\cn{r}_1$ & am Anfang der Leitung \\
         $\cn{r}_2$ & am Ende der Leitung \\
-        $\alpha_R$ & Reflexionsdämpfung \\
+        $\alpha_R$ & Rückflussdämpfung $\left[ Np \right]$ \\
         $\cn{Z}_1$ & Leitungswiederstand am Anfang \\
         $\cn{Z}_2$ & Wiederstand nach der Leitung \\
+        $\cn{P_{in}}$ & Leistung an der Quelle \\
+        $\cn{P_{out}}$ & Leistung an der Last \\
       \end{dtabular} \\
       \begin{tabular}{cl}
         \midrule
@@ -897,11 +1000,32 @@ $$\lambda = \frac{2\pi}{\beta} = \frac{c_0}{f \cdot \sqrt{\varepsilon_r}} \qquad
       $\fmm \cn{r}_2 = \cn{r}_1 \cdot e^{ 2 \gamma l} = \frac{\cn{Z}_2-\cn{Z}_0}{\cn{Z}_2 + \cn{Z}_0}$ \\
       $\fmm \cn{Z} = \cn{Z}_0 \cdot \frac{1+\cn{r}}{1 - \cn{r}}$ \\
       $\fmm \cn{U}_r = \cn{r} \cdot \cn{U}_v \quad \cn{I}_r = \cn{r} \cdot \cn{I}_v$ \\
-      $\fmm \alpha_R = -20 \cdot \log(r) \: dB$ \\
-      $\fmm \cn{U}_{v2} = \cn{U}_{v1} \cdot e^{-j \beta l}$
+      $\fmm \alpha_R = -\ln(r) \: Np = -20 \log_{10}(r) \: dB$ \\
+      $\fmm \cn{U}_{v2} = \cn{U}_{v1} \cdot e^{-j \beta l}$ \\
+      $\fmm P_v = \frac{U^2_{v1}}{Z_0} \qquad P_r = \frac{U^2_{r1}}{Z_0}$ \\
+      $\fmm P_{v} = P_{in} \qquad P_{out} = P_{v} - P_{r}$
     \end{mtabular}\\
   \end{tabular}
 \end{center}
+
+
+\subsection{Quelle einer Leitung}
+
+\begin{tabular}{ll}
+  \begin{tabular}{l}
+    \begin{circuitikz} [scale = 0.6, transform shape]
+      \draw (2,0) to [short] (0,0) to [V, l={\Large $\cn{U_q}$}] (0,2) to [R, l={\Large $R_i$}] (2,2);
+      \draw [ultra thick] (2,2) -- (6,2) (2,0) -- (6,0);
+      \draw (6,2) to [short] (7,2) to [R, l={\Large $\cn{Z_L}$}] (7,0) to [short] (6,0);
+      \draw (4,1) node {\Large $\cn{Z_0}$, $\gamma$, $l$};
+    \end{circuitikz}
+  \end{tabular}
+  \begin{mtabular}{l}
+    $\cn{U_1v} = \frac{\cn{Z_0}}{Z_0 + R_i} \cdot \cn{U_q} \stackrel{\tiny{R_i = Z_0}}{=} \frac{\cn{U_q}}{2}$ \\
+    $\cn{U_1r} = \cn{r_1} \cdot U_{1v} \quad \cn{U_1} = \cn{U_{1r}} + \cn{U_{1v}}$ \\
+    $\cn{I_1} = \cn{I_{1v}} - \cn{I_{1r}} = \frac{\cn{U_{1v}}}{\cn{Z_0}} - \frac{\cn{U_{1r}}}{\cn{Z_0}}$ 
+  \end{mtabular}
+\end{tabular}
 
 \subsection{Leitung als Zweitor}
 \begin{tabular}{ll}
@@ -918,8 +1042,8 @@ $$\lambda = \frac{2\pi}{\beta} = \frac{c_0}{f \cdot \sqrt{\varepsilon_r}} \qquad
       \draw[-latex,shorten >=1mm, shorten <=1mm,in=120, out=240] (-1,0.6) to node[right] {\Large $\cn{U}_1$} (-1,-0.6);
       \draw[-latex,shorten >=1mm, shorten <=1mm,out=300, in=60] (5,0.6) to node[left] {\Large $\cn{U}_2$} (5,-0.6);
     \end{circuitikz} \\
-    $\fmm \left[\begin{array}{c} \cn{U}_1 \\ \cn{I}_1 \end{array}\right] = 
-    [\cn{A}] \cdot \left[\begin{array}{c} \cn{U}_2 \\ -\cn{I}_2 \end{array}\right]$
+    %$\fmm \left[\begin{array}{c} \cn{U}_1 \\ \cn{I}_1 \end{array}\right] = 
+    %[\cn{A}] \cdot \left[\begin{array}{c} \cn{U}_2 \\ -\cn{I}_2 \end{array}\right]$
   \end{mtabular} &
   \begin{mtabular}{l}
     $\fmm [\cn{A}] = \left[ \begin{array}{cc}
@@ -931,23 +1055,16 @@ $$\lambda = \frac{2\pi}{\beta} = \frac{c_0}{f \cdot \sqrt{\varepsilon_r}} \qquad
 \end{tabular}
 
 \subsection{Verlustlose Leitung}
-Bei hochwertigem Leitungsmaterial und nicht zu grosser Leitungslänge kann die Leitung als Verlustlos angenommen werden:
-$R' = 0, \: G' = 0$. Somit gelten folgende Beziehungen:
-$$\alpha = 0, \qquad \beta = \omega \sqrt{L' C'}, \qquad \cn{Z}_0 = \sqrt{\frac{L'}{C'}} =: R_0, \qquad \gamma = j \beta \qquad  v_{ph} = \frac{1}{\sqrt{L'C'}}$$
-$$\cn{Z}_1 = R_0 \cdot \frac{\cn{Z}_2 + j R_0 \cdot \tan{\beta l}}{R_0 + j \cn{Z}_2 \cdot \tan{\beta l}}$$
-
-Der \cdef{Verkürzungsfaktor $VK$} ist das Verhältnis der Wellengeschwindigkeit:
-$$VK = \frac{\lambda}{\lambda_0} = \frac{v_{ph}}{c_0}, \qquad \lambda = VK \cdot \frac{c_0}{f}$$
+$$R' = G' = 0 \quad \alpha = 0, \quad \beta = \omega \sqrt{L' C'}, \quad \cn{Z}_0 = \sqrt{\frac{L'}{C'}} =: R_0, \quad \gamma = j \beta \quad  v_{ph} = \frac{1}{\sqrt{L'C'}}$$
+$$\cn{Z}_1 = R_0 \cdot \frac{\cn{Z}_2 + j R_0 \cdot \tan{\beta l}}{R_0 + j \cn{Z}_2 \cdot \tan{\beta l}} \qquad P_r = P_v \cdot r_2^2 \qquad v_{ph} = \frac{c}{\sqrt{\varepsilon_r \cdot \mu_r}} \stackrel{\tiny \mu_r = 1}{=} \frac{c}{\sqrt{\varepsilon_r}}$$
+$$\text{Verkürzungsfaktor: } \: VK = \frac{\lambda}{\lambda_0} = \frac{v_{ph}}{c_0}, \qquad \lambda = VK \cdot \frac{c_0}{f}$$
 
 \subsubsection{Stehwellenverhältnis}
 In der Leitung befindet sich ein \cdef{Spannungsmaximum $l_{U_{max}}$} und ein \cdef{Spannungsminimum $l_{U_{min}}$}
 $$\cn{U}(l) = \cn{U}_v(l) \cdot (1 + \cn{r}(l)), \qquad \cn{r}(l) = \cn{r}_1 \cdot e^{-j 2 \beta l}, \qquad \cn{r}_1 = r \cdot e^{j \varphi_1}$$
 $$l_{U_{max}} = \frac{\varphi_1}{2 \beta} \qquad l_{U_{min}} = \frac{\pi + \varphi_1}{2\beta} \qquad \varphi_1 = l_{U_{max}} \cdot 2 \beta$$
 
-Das \cdef{Stehwellenverhältnis $s$} ist das Verhältnis zwischen Spannungsmaximum und -minimum. 
-Es wird auch VSWR (voltage standing wave ratio) genannt. 
-Der \cdef{Anpassungsfaktor $m$} ist der Kehrwert von $s$.
-$r$ ist der Betrag des Reflektionsfaktors (irgendwo auf der Leitung).
+Das \cdef{Stehwellenverhältnis $s$} (VSWR) ist das Verhältnis von Spannungsmaximum und -minimum.  
 $$s = \frac{U_{max}}{U_{min}} = \frac{1+r}{1-r} \qquad m = \frac{1}{s} = \frac{1-r}{1+r} \qquad r = \frac{s-1}{s+1} = \frac{1-m}{1+m}$$
 
 \subsubsection{Smith Chart}
